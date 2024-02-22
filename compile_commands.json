@@ -1,0 +1,193 @@
+[
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o main.o main.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/main.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o common.o common.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/common.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o isa.o isa.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/isa.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o readfile.o readfile.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/readfile.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o cfg.o cfg.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/cfg.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o tcfg.o tcfg.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/tcfg.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o loops.o loops.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/loops.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o options.o options.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/options.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o pipeline.o pipeline.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/pipeline.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o exegraph.o exegraph.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/exegraph.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o estimate.o estimate.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/estimate.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o cache.o cache.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/cache.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o bpred.o bpred.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/bpred.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ilp.o ilp.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ilp.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o infeasible.o infeasible.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/infeasible.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o reg.o reg.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/reg.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o symexec.o symexec.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/symexec.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o conflicts.o conflicts.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/conflicts.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o infdump.o infdump.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/infdump.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/eval.o ss/eval.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/eval.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/loader.o ss/loader.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/loader.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/machine.o ss/machine.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/machine.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/misc.o ss/misc.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/misc.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/my_opt.o ss/my_opt.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/my_opt.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/options.o ss/options.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/options.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/regs.o ss/regs.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/regs.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/resource.o ss/resource.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/resource.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/ss_exegraph.o ss/ss_exegraph.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/ss_exegraph.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/ss_isa.o ss/ss_isa.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/ss_isa.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/ss_machine.o ss/ss_machine.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/ss_machine.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/ss_readfile.o ss/ss_readfile.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/ss_readfile.c"
+}
+,
+{
+  "directory": "/home/weichen/chronos-demo-arm/est-arm",
+  "command": "gcc -g -include /usr/include/errno.h -c -o ss/symbol.o ss/symbol.c",
+  "file": "/home/weichen/chronos-demo-arm/est-arm/ss/symbol.c"
+}
+]

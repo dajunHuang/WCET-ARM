@@ -1,0 +1,450 @@
+[
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "conflicts.o",
+            "conflicts.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "conflicts.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "readfile.o",
+            "readfile.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "readfile.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/ss_isa.o",
+            "ss/ss_isa.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/ss_isa.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "cfg.o",
+            "cfg.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "cfg.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/ss_machine.o",
+            "ss/ss_machine.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/ss_machine.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/ss_readfile.o",
+            "ss/ss_readfile.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/ss_readfile.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "cache.o",
+            "cache.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "cache.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "infeasible.o",
+            "infeasible.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "infeasible.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/eval.o",
+            "ss/eval.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/eval.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "infdump.o",
+            "infdump.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "infdump.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "symexec.o",
+            "symexec.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "symexec.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "main.o",
+            "main.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "main.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "bpred.o",
+            "bpred.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "bpred.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/my_opt.o",
+            "ss/my_opt.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/my_opt.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "reg.o",
+            "reg.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "reg.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/regs.o",
+            "ss/regs.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/regs.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/symbol.o",
+            "ss/symbol.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/symbol.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/machine.o",
+            "ss/machine.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/machine.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/misc.o",
+            "ss/misc.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/misc.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/options.o",
+            "ss/options.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/options.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "exegraph.o",
+            "exegraph.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "exegraph.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "loops.o",
+            "loops.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "loops.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ilp.o",
+            "ilp.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ilp.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "tcfg.o",
+            "tcfg.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "tcfg.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "pipeline.o",
+            "pipeline.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "pipeline.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/loader.o",
+            "ss/loader.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/loader.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/ss_exegraph.o",
+            "ss/ss_exegraph.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/ss_exegraph.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "ss/resource.o",
+            "ss/resource.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "ss/resource.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "common.o",
+            "common.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "common.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "isa.o",
+            "isa.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "isa.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "estimate.o",
+            "estimate.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "estimate.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-g",
+            "-include",
+            "/usr/include/errno.h",
+            "-o",
+            "options.o",
+            "options.c"
+        ],
+        "directory": "/home/djhuang/Desktop/chronos-demo-arm/est-arm",
+        "file": "options.c"
+    }
+]

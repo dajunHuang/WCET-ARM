@@ -1,0 +1,5 @@
+In file included from ss/loader.h:59:0,
+                 from ss/symbol.c:86:
+ss/machine.h:528:21: warning: extra tokens at end of #endif directive [enabled by default]
+ #endif /* SET_TPC */123
+                     ^
