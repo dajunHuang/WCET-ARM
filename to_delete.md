@@ -14,9 +14,9 @@ Makefile中arm编译器和反汇编器我换成了比较新的`arm-none-eabi-gcc
 
 - 因为编译后的程序中不再有多余函数，故删除`ss/ss_readfile.c`中`is_lib_func()`函数，及其调用。
 
-- `ss/ss_readfile.c`中`lookup_addr()`函数中设置`main_addr`的部分改为设置entry_addr。
+- `ss/ss_readfile.c`中`lookup_addr()`函数中设置`main_addr`的部分改为设置`entry_addr`。
 
-- `ss/ss_readfile.c`中`read_text_head()`中`while ((section_index++) < nums_of_sections)`改为while` ((section_index++) < nums_of_sections - 1)`，此处循环次数错了，`sym_loadsyms__elf()`函数608行也是。
+- `ss/ss_readfile.c`中`read_text_head()`中`while ((section_index++) < nums_of_sections)`改为`while ((section_index++) < nums_of_sections - 1)`，此处循环次数错了，`sym_loadsyms__elf()`函数608行也是。
 
 - `ss/symbol.c`中`sym_loadsyms__elf()`函数683加上判断`(symtb.st_info & 0xf) == 2`，意思是只有函数名才加入符号表，暂时我认为加上其它符号并没有作用。
 
