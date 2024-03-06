@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "*.def": "c"
+        "*.def": "c",
+        "cache.h": "c",
+        "symbol.h": "c"
     }
 }

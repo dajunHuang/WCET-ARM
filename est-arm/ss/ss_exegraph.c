@@ -29,6 +29,9 @@
 #include "machine.h"
 #include "ss_machine.h"
 
+int ss_inst_fu(de_inst_t *inst);
+int get_mblk_hitmiss(tcfg_node_t *bbi, int mblk_id, loop_t *lp);
+
 extern int *num_mp_insts;
 extern int pipe_stages;
 extern enum ss_pfu_class fu2pfu[];

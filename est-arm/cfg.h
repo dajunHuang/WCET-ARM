@@ -92,7 +92,7 @@ typedef struct
     de_inst_t *code; // decoded program text
     int code_size;   // code size (in bytes)
     int num_inst;    // number of instructions
-    addr_t start_addr, end_addr;//, main_addr;
+    addr_t start_addr, end_addr, entry_addr;
     proc_t *procs; // procedures
     int num_procs; // number of procedures
     int start_proc; // index of the main proc

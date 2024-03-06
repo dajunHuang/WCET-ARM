@@ -64,10 +64,10 @@ lookup_addr(char *fname)
   for (i = 0; i < sym_ntextsyms; i++)
   {
     sym = sym_textsyms[i];
-    // if (strcmp(sym->name, "main") == 0)
-    // {
-    //   prog.main_addr = sym->addr;
-    // }
+    if (strcmp(sym->name, "_start") == 0)
+    {
+      prog.entry_addr = sym->addr;
+    }
     if (num_procs >= max_num_procs)
     {
       max_num_procs *= 2;

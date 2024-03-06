@@ -1,3 +1,3 @@
 file est
-b build_cfgs
+b scan_procs
 r -run CFG ../results/results_est/insertsort/insertsort

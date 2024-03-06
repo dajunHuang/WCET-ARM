@@ -183,7 +183,7 @@ void panic(char *fmt, ...);
 #define warn(fmt, args...) \
   _warn(__FILE__, __FUNCTION__, __LINE__, fmt, ##args)
 
-void _warn(char *file, char *func, int line, char *fmt, ...);
+void _warn(char *file, const char *func, int line, char *fmt, ...);
 #else  /* !__GNUC__ */
 void warn(char *fmt, ...);
 #endif /* !__GNUC__ */
@@ -198,7 +198,7 @@ void warn(char *fmt, ...);
       _warn(__FILE__, __FUNCTION__, __LINE__, fmt, ##args); \
     __first = FALSE;                                        \
   } while (0)
-void _warn(char *file, char *func, int line, char *fmt, ...);
+void _warn(char *file, const char *func, int line, char *fmt, ...);
 #else  /* !__GNUC__ */
 void warn(+char *fmt, ...);
 #endif /* !__GNUC__ */

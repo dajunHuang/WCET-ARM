@@ -30,6 +30,8 @@
 #include "resource.h"
 #include "../bpred.h"
 
+void set_cache_basic(int nsets, int assoc, int bsize, int miss_penalty);
+
 // option variables from SimpleScalar
 
 /*

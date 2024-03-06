@@ -27,6 +27,8 @@
 #include "pipeline.h"
 #include "exegraph.h"
 
+void create_egraph_ss();
+
 extern int *num_mp_insts;
 extern int pipe_stages;
 
@@ -146,7 +148,7 @@ dump_egraph_depends(int inst)
             if (e->normal == EG_COND_EDGE)
                 printf("*");
             n2 = e->dst;
-            printf(" %d.%d", n2->inst, n2->stage, e->lat.hi);
+            printf(" %d.%d %d", n2->inst, n2->stage, e->lat.hi);
         }
         printf("\n");
     }

@@ -52,19 +52,19 @@ lookup_addr(de_inst_t *code, int num, addr_t addr)
 static int
 scan_procs(int *proc_ent)
 {
-	int start_id, i, tid;
+	int entry_id, i, tid;
 
 	prog.num_procs = 0;
 	for (i = 0; i < prog.num_inst; i++)
 	{
-		// check whether this instr. is the main entrance; mark it if so
-		if (prog.code[i].addr == prog.start_addr)
+		// check whether this instr. is the entrance; mark it if so
+		if (prog.code[i].addr == prog.entry_addr)
 		{
 			if (proc_ent[i] == 0)
 			{
 				proc_ent[i] = 1;
 				prog.num_procs++;
-				start_id = i;
+				entry_id = i;
 			}
 		}
 		else if (inst_type(&prog.code[i]) == INST_CALL)
@@ -74,7 +74,7 @@ scan_procs(int *proc_ent)
 			tid = lookup_addr(prog.code, prog.num_inst, prog.code[i].target);
 			if (tid == -1)
 			{
-				// fprintf(stderr, "no match for call: %x\n", prog.code[i].target);
+				fprintf(stderr, "no match for call: %x\n", prog.code[i].target);
 				// exit(1);
 			}
 			if (proc_ent[tid] == 0)
@@ -84,7 +84,7 @@ scan_procs(int *proc_ent)
 			}
 		}
 	}
-	return start_id;
+	return entry_id;
 }
 
 /* liangyun */

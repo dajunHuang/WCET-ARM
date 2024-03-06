@@ -18,7 +18,7 @@
 typedef int matrix[MAXSIZE][MAXSIZE];
 
 /* Forwards declarations */
-int main(void);
+int _start(void);
 int Test(matrix);
 int Initialize(matrix);
 int InitSeed(void);
@@ -31,7 +31,7 @@ matrix Array;
 int Postotal, Negtotal, Poscnt, Negcnt;
 
 /* The main function */
-int main(void)
+int _start(void)
 {
     // InitSeed();
     Seed = 0;
@@ -84,7 +84,7 @@ int main(void)
 
         TotalTime = (StopTime - StartTime) / 1000.0;
 
-        /* printf("    - Size of array is %d\n", MAXSIZE); */
+        /* printf(a"    - Size of array is %d\n", MAXSIZE); */
         /* printf("    - Num pos was %d and Sum was %d\n", Poscnt, Postotal); */
         /* printf("    - Num neg was %d and Sum was %d\n", Negcnt, Negtotal); */
         /* printf("    - Num neg was %d\n", Negcnt); */

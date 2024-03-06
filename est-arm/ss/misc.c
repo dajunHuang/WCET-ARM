@@ -165,7 +165,7 @@ void panic(char *fmt, ...)
 
 /* declare a warning */
 #ifdef __GNUC__
-void _warn(char *file, char *func, int line, char *fmt, ...)
+void _warn(char *file, const char *func, int line, char *fmt, ...)
 #else  /* !__GNUC__ */
 void warn(char *fmt, ...)
 #endif /* __GNUC__ */

@@ -54,6 +54,13 @@ int cnt1, cnt2;
 #define SIZE 1024
 short a[SIZE];
 
+int add1(int a, int b)
+{
+	return a + b;
+}
+
+int add2(int a, int b);
+
 int _start()
 {
 	int i, j;
@@ -76,5 +83,13 @@ int _start()
 		}
 		i++;
 	}
+	int c1 = add1(1, 2);
+	int c2 = add2(3, 4);
+	
 	return 1;
+}
+
+int add2(int a, int b)
+{
+	return a + b;
 }
