@@ -1,6 +1,9 @@
-周永师兄虚拟机里`~/chronos-demo`里的原版工具demo是可以用的，我就照着这里的实现做了一个功能类似的arm版本，原`~/chronos-demo/est`目录我换成了`~/chronos/Desktop/WCET/est`,用Makefile编译。
+编译器：[arm-none-eabi-gcc](https://developer.arm.com/downloads/-/gnu-rm)
 
-Makefile中arm编译器和反汇编器我换成了比较新的`arm-none-eabi-gcc`和`arm-none-eabi-objdump`[Downloads](https://developer.arm.com/downloads/-/gnu-rm)。考虑到benchmark程序都没有使用标准库，编译选项我加上了`-nostdlib`，这样编译后的程序更简洁，没有无关代码，便于分析，但程序入口函数变为`_start`。
+
+<!-- 周永师兄虚拟机里`~/chronos-demo`里的原版工具demo是可以用的，我就照着这里的实现做了一个功能类似的arm版本，原`~/chronos-demo/est`目录我换成了`~/chronos/Desktop/WCET/est`,用Makefile编译。
+
+考虑到benchmark程序都没有使用标准库，编译选项我加上了`-nostdlib`，这样编译后的程序更简洁，没有无关代码，便于分析，但程序入口函数变为`_start`。
 
 本仓库下`est-arm`相比于师兄虚拟机里`~/chronos/Desktop/WCET/est`:
 
@@ -20,7 +23,7 @@ Makefile中arm编译器和反汇编器我换成了比较新的`arm-none-eabi-gcc
 
 - `ss/symbol.c`中`sym_loadsyms__elf()`函数683加上判断`(symtb.st_info & 0xf) == 2`，意思是只有函数名才加入符号表，暂时我认为加上其它符号并没有作用。
 
-ELF文件中的符号（函数地址，函数长度等）目前能被正确识别，但指令识别比较复杂，功能是否正确我还没验证。`read_code()`函数之后的部分我也还没开始验证。
+ELF文件中的符号（函数地址，函数长度等）目前能被正确识别，但指令识别比较复杂，功能是否正确我还没验证。`read_code()`函数之后的部分我也还没开始验证。 -->
 
   
 
