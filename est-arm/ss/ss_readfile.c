@@ -193,9 +193,6 @@ read_inst(FILE *fp, addr_t addr, int i)
 
   fread(&inst, sizeof(inst), 1, fp);
   prog.code[i].addr = addr;
-  prog.code[i].size = sizeof(md_inst_t);
-  MD_SET_OPCODE(op, inst);
-  prog.code[i].op_enum = MD_OP_ENUM(op);
   decode_inst(&prog.code[i], inst);
 }
 

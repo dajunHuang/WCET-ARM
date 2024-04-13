@@ -30,7 +30,7 @@ void init_isa()
 {
     // if SimpleScalar is used, call this to init SimpleScalar ISA info
     init_isa_ss();
-    // dump_isa();
+    dump_isa();
 }
 
 // return (decoded) instruction type
@@ -54,6 +54,6 @@ void dump_isa()
 {
     int i;
 
-    for (i = 0; i < num_isa; i++)
+    for (i = 1; i <= num_isa; i++)
         printf("%3d: %-10s type %x\n", i, isa[i].name, isa[i].type);
 }

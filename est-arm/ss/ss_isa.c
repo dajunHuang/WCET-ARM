@@ -70,11 +70,11 @@ void init_isa_ss()
 {
 	int i, len;
 
-	num_isa = OP_MAX;
+	num_isa = 0;
 
-	isa = (isa_t *)calloc(OP_MAX - 1, sizeof(isa_t));
+	isa = (isa_t *)calloc(OP_MAX, sizeof(isa_t));
 	CHECK_MEM(isa);
-	for (i = 1; i < OP_MAX - 1; i++)
+	for (i = 1; i < OP_MAX; i++)
 	{
 		isa[i].opcode = i;
 		if (md_op2name[i] != NULL)
@@ -86,8 +86,12 @@ void init_isa_ss()
 		}
 		if (md_op2flags[i] == F_LINK)
 			isa[i].type = INST_NOP;
-		else if ((md_op2flags[i] & (F_CTRL | F_DIRJMP)) == (F_CTRL | F_DIRJMP))
-			isa[i].type = INST_TRAP;
+		// else if ((md_op2flags[i] & (F_CTRL | F_DIRJMP)) == (F_CTRL | F_DIRJMP))
+		// 	isa[i].type = INST_TRAP;
+		else if ((md_op2flags[i] & (F_CTRL | F_UNCOND | F_DIRJMP)) == (F_CTRL | F_UNCOND | F_DIRJMP))
+			isa[i].type = INST_UNCOND;
+		else if ((md_op2flags[i] & (F_CTRL | F_UNCOND | F_INDIRJMP)) == (F_CTRL | F_UNCOND | F_INDIRJMP))
+			isa[i].type = INST_RET;
 		else if (md_op2flags[i] & F_ICOMP)
 			isa[i].type = INST_ICOMP;
 		else if (md_op2flags[i] & F_FCOMP)
@@ -98,12 +102,10 @@ void init_isa_ss()
 			isa[i].type = INST_STORE;
 		else if (md_op2flags[i] & F_COND)
 			isa[i].type = INST_COND;
+		else if (md_op2flags[i] & F_UNCOND)
+			isa[i].type = INST_UNCOND;
 		else if (md_op2flags[i] & F_CALL)
 			isa[i].type = INST_CALL;
-		else if ((md_op2flags[i] & (F_CTRL | F_UNCOND | F_DIRJMP)) == (F_CTRL | F_UNCOND | F_DIRJMP))
-			isa[i].type = INST_UNCOND;
-		else if ((md_op2flags[i] & (F_CTRL | F_UNCOND | F_INDIRJMP)) == (F_CTRL | F_UNCOND | F_INDIRJMP))
-			isa[i].type = INST_RET;
 		else if (md_op2flags[i] & F_TRAP)
 			isa[i].type = INST_TRAP;
 		else
@@ -111,6 +113,8 @@ void init_isa_ss()
 			fprintf(stderr, "%s  %d: unidentified instruction type!  flag :%d \n", isa[i].name, i, md_op2flags[i]);
 			exit(1);
 		}
+
+		num_isa ++;
 		// this code for debug;
 		// printf("opcod:%d  name:%s  type:%d\n",isa[i].opcode,isa[i].name,isa[i].type);
 	}
@@ -194,7 +198,7 @@ void decode_inst(de_inst_t *de_inst, md_inst_t inst)
 
 	// get inst opcode and from the opcode get its type info
 	MD_SET_OPCODE(op, inst);
-	op = MD_OP_ENUM(op);
+	//op = MD_OP_ENUM(op);
 	de_inst->op_enum = op;
 	de_inst->size = sizeof(md_inst_t);
 	type = isa[op].type;
@@ -207,7 +211,7 @@ void decode_inst(de_inst_t *de_inst, md_inst_t inst)
 		// 高位丄1�71
 		if (flag)
 		{
-			offset = ((inst & 0xffffff) << 2) | 0xfa000000;
+			offset = ((inst & 0xffffff) << 2) | 0xfc000000;
 		}
 		else
 		{

@@ -560,7 +560,7 @@ void build_cfgs()
 	for (i = 0; i < prog.num_procs; i++)
 	{
 		create_cfg(&prog.procs[i]);
-		// dump_cfg(stdout, &prog.procs[i]);
+		dump_cfg(stdout, &prog.procs[i]);
 	}
 }
 

@@ -107,5 +107,10 @@ my_bsearch(const void *key, const void *base, size_t n, size_t size,
 void my_insert(const void *x, void *base, void *y, int *nelem, int size);
 
 int bits(unsigned x);
-
+void init_queue(Queue *queue, int elem_size);
+void free_queue(Queue *queue);
+void enqueue(Queue *queue, void *x);
+int queue_empty(Queue *queue);
+void * dequeue(Queue *queue);
+void clear_queue(Queue *queue);
 #endif

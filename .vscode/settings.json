@@ -1,7 +1,9 @@
 {
     "files.associations": {
+        "*.inc": "plaintext",
         "*.def": "c",
         "cache.h": "c",
-        "symbol.h": "c"
+        "symbol.h": "c",
+        "infeasible.h": "c"
     }
 }

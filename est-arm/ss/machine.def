@@ -340,10 +340,8 @@ DEFLINK(BLKPRE_LINK, 0x09, "blkpre_link", 20, 0x0f)
 			SET_NPC(CPC + BOFS + 8); \
 		}                            \
 	}
-DEFINST(BR, 0x0a,
-		"b%c", "%j",
-		IntALU, F_CTRL | F_DIRJMP,
-		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
+
+DEFLINK(BR_LINK, 0x0a, "br_link", 28, 0x0f)
 
 #define BRL_IMPL                     \
 	{                                \
@@ -357,7 +355,7 @@ DEFINST(BR, 0x0a,
 	}
 DEFINST(BRL, 0x0b,
 		"bl%c", "%j",
-		IntALU, F_CTRL | F_DIRJMP,
+		IntALU, F_CALL /*F_CTRL | F_DIRJMP*/,
 		DGPR(14), DNA, DNA, DCOND, DNA, DNA, DNA)
 
 DEFLINK(CDXPOST_LINK, 0x0c, "cdxpost_link", 8, 0x0f)
@@ -394,6 +392,8 @@ DEFLINK(LDRSHSTRSH_LINK, 0x0f, "ldrshstrsh_link", 20, 0x0f)
 CONNECT(ALUREG1_LINK)
 
 DEFLINK(ALUREG1a_LINK, 0x0f00, "alureg1a_link", 20, 0x0f)
+
+DEFLINK(BX_LINK, 0x01, "bx_link", 20, 0x0f)
 
 /* FIXME: 0x00 is SWP */
 
@@ -1549,6 +1549,13 @@ DEFINST(TSTI1, 0x7f00,
 DEFINST(MRSI_SPSR, 0x0f,
 		"mrs", "spsr,%d",
 		IntALU, F_ICOMP,
+		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
+
+CONNECT(BX_LINK)
+
+DEFINST(BX, 0x02,
+		"bx%c", "%j",
+		IntALU, F_CTRL | F_UNCOND | F_INDIRJMP,
 		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
 
 /* ALL OF THE MULL INSTRUCTIONS */
@@ -4620,6 +4627,33 @@ DEFINST(LDM_PUWL, 0x0b,
 		"ldm%c%a", "%n!,%R",
 		RdPort, F_MEM | F_STORE | F_DISP | F_CISC,
 		DNA, DNA, DNA, DNA, DNA, DNA, DNA)
+
+CONNECT(BR_LINK)
+
+DEFINST(BRGE, 0x0a,
+		"bge%c", "%j",
+		IntALU, F_COND,
+		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
+
+DEFINST(BRLT, 0x0b,
+		"blt%c", "%j",
+		IntALU, F_COND,
+		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
+
+DEFINST(BRGT, 0x0c,
+		"bgt%c", "%j",
+		IntALU, F_COND,
+		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
+
+DEFINST(BRLE, 0x0d,
+		"ble%c", "%j",
+		IntALU, F_COND,
+		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
+
+DEFINST(BR, 0x0e,
+		"b%c", "%j",
+		IntALU, F_UNCOND /*F_CTRL | F_DIRJMP*/,
+		DNA, DNA, DNA, DCOND, DNA, DNA, DNA)
 
 /* STM_PUS, 0x0c, TODO... */
 

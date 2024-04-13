@@ -42,6 +42,7 @@ benchmark/%: benchmark/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
+	make -C est-arm clean
 	-rm -r results benchmark/$(TARGET)
 	mkdir -p results/results_est results/results_sim 
 	mkdir -p results/results_est/$(TARGET)

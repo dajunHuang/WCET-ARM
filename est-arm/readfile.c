@@ -30,7 +30,7 @@ extern isa_t *isa;
 void read_code(char *fname)
 {
 	read_code_ss(fname);
-	// dump_code();
+	dump_code();
 }
 
 void dump_code()
