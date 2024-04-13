@@ -30,8 +30,7 @@ est-arm/est:
 
 # estimate the benchmark
 est: est-arm/est benchmark/$(TARGET)
-	cp benchmark/$(TARGET) results/results_est/$(TARGET)
-	cp benchmark/constriants/$(TARGET).cons results/results_est/$(TARGET)
+	cp benchmark/$(TARGET) benchmark/constriants/$(TARGET).cons results/results_est/$(TARGET)
 	-$(DIS) -d results/results_est/$(TARGET)/$(TARGET) > results/results_est/$(TARGET)/$(TARGET).dis
 	est-arm/est -run CFG -config $(CONFIG) results/results_est/$(TARGET)/$(TARGET)
 	# est-arm/est -config $(CONFIG) results/results_est/$(TARGET)/$(TARGET) > results/results_est/$(TARGET)/est_info.txt
