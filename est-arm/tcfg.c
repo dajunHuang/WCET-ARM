@@ -91,6 +91,7 @@ new_tcfg_node(cfg_node_t *bb)
     CHECK_MEM(bbi);
     bbi->bb = bb;
     bbi->id = num_tcfg_nodes;
+    bbi->type = bb->type;
 
     return bbi;
 }
@@ -287,12 +288,12 @@ void prog_tran(char *obj_file)
     FILE *ftcfg;
     char file[100];
     sprintf(file, "%s.map", obj_file);
-
     proc = &prog.procs[prog.start_proc];
     proc_inline(proc, NULL, NULL, 0);
     collect_tcfg_edges();
     ftcfg = fopen(file, "w");
     dump_tcfg(ftcfg);
+    dump_tcfg(stdout);
     fclose(ftcfg);
     build_bbi_map();
 }
@@ -332,9 +333,21 @@ void dump_tcfg(FILE *fp)
         fprintf(fp, "%d(%d.%d): [ ", bbi->id, bbi_pid(bbi), bbi_bid(bbi));
         for (edge = bbi->out; edge != NULL; edge = edge->next_out)
         {
-            fprintf(fp, "%d ", edge->dst->id);
+            fprintf(fp, "%d(%c) ", edge->dst->id, edge->branch == TAKEN ? 'T' : 'N');
         }
-        fprintf(fp, "]\n");
+        fprintf(fp, "] ");
+
+		if(bbi->type == CTRL_SEQ)
+			printf("\tCTRL_SEQ");
+		else if(bbi->type == CTRL_COND)
+			printf("\tCTRL_COND");
+		else if(bbi->type == CTRL_UNCOND)
+			printf("\tCTRL_UNCOND");
+		else if(bbi->type == CTRL_CALL)
+			printf("\tCTRL_CALL");
+		else if(bbi->type == CTRL_RET)
+			printf("\tCTRL_RET");
+        fprintf(fp, "\n");
     }
     fprintf(fp, "\n");
 }

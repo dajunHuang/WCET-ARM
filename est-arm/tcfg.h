@@ -41,6 +41,7 @@ typedef struct
     cfg_node_t *bb;        // pointer to the physical basic block
     int id;                // global id in tcfg (has nothing to do with its bb id)
     tcfg_edge_t *in, *out; // incoming and outgoing edges
+    bb_type_t type;
     unsigned flags;
     int loop_id;    // vivy: for infeasible path constraints
     int exec_count; // vivy: for infeasible path constraints

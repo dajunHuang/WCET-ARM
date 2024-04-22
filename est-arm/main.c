@@ -31,6 +31,10 @@ void cache_analysis();
 void pipe_analysis();
 void read_opt(int argc, char **argv);
 void read_code(char *fname);
+void build_cfgs();
+void run_cfg(char *obj_file);
+void prog_tran(char *obj_file);
+void loop_process();
 
 char DEBUG_INFEAS = 0;
 
@@ -107,6 +111,7 @@ path_analysis(char *obj_file)
 
     // create procs and their CFGs from the decoded text
     build_cfgs();
+    run_cfg(obj_file);
 
     // vivy: read list of functions to include in estimation
     // do this after prog.procs are established

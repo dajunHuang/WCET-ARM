@@ -573,17 +573,24 @@ void dump_cfg(FILE *fp, proc_t *proc)
 	for (i = 0; i < proc->num_bb; i++)
 	{
 		bb = &proc->cfg[i];
-		fprintf(fp, " %d : %08x : [ ", bb->id, bb->sa);
+		fprintf(fp, " %2d : %08x : [ ", bb->id, bb->sa);
 		if (bb->out_n != NULL)
-			fprintf(fp, " %d", bb->out_n->dst->id);
-		else
-			fprintf(fp, " ");
-		fprintf(fp, " , ");
+			fprintf(fp, "%d(N) ", bb->out_n->dst->id);
 		if (bb->out_t != NULL)
-			fprintf(fp, " %d ", bb->out_t->dst->id);
-		else
-			fprintf(fp, " ");
-		fprintf(fp, " ] ");
+			fprintf(fp, "%d(T) ", bb->out_t->dst->id);
+		fprintf(fp, "] ");
+
+		if(bb->type == CTRL_SEQ)
+			printf("\tCTRL_SEQ");
+		else if(bb->type == CTRL_COND)
+			printf("\tCTRL_COND");
+		else if(bb->type == CTRL_UNCOND)
+			printf("\tCTRL_UNCOND");
+		else if(bb->type == CTRL_CALL)
+			printf("\tCTRL_CALL");
+		else if(bb->type == CTRL_RET)
+			printf("\tCTRL_RET");
+
 		if (bb->callee != NULL)
 		{
 			fprintf(fp, " P%d", bb->callee->id);
