@@ -23,7 +23,5 @@
 
 void read_opt(int argc, char **argv)
 {
-#ifdef TARGET_SS
     read_opt_ss(argc, argv);
-#endif
 }

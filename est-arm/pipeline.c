@@ -30,7 +30,15 @@
 #include "loops.h"
 #include "pipeline.h"
 
+int max_inst_lat(de_inst_t *inst);
+int cond_bbi(tcfg_node_t *bbi);
 int get_mblk_hitmiss(tcfg_node_t *bbi, int mblk_id, loop_t *lp);
+void create_egraph();
+int est_egraph();
+void clear_tcfg_edge_flags();
+int bbi_pid(tcfg_node_t *bbi);
+int bbi_bid(tcfg_node_t *bbi);
+int cond_bbi(tcfg_node_t *bbi);
 
 extern tcfg_node_t **tcfg;
 extern int num_tcfg_nodes;

@@ -87,6 +87,7 @@
 #include "host.h"
 #include "misc.h"
 #include "eval.h"
+#include <errno.h>
 
 #if defined(sparc) && !defined(__svr4__)
 #define strtoul strtol

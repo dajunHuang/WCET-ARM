@@ -33,6 +33,10 @@ extern tcfg_edge_t **tcfg_edges;
 extern int bpred_scheme;
 extern int pipe_ibuf_size, pipe_iwin_size;
 
+int bbi_pid(tcfg_node_t *bbi);
+int bbi_bid(tcfg_node_t *bbi);
+int cond_bbi(tcfg_node_t *bbi);
+
 int *pi_table;
 bfg_node_t root_bbb, end_bbb;
 int root_bbb_id, end_bbb_id;

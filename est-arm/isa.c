@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include "isa.h"
 
+int ss_max_inst_lat(de_inst_t *inst);
 void init_isa_ss();
 
 isa_t *isa;  // info of the instruction types of the ISA

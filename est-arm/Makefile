@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g -include /usr/include/errno.h
+CFLAGS=-g -Iss
 
 SS_SRC=$(wildcard ss/*.c)
 SRC=main.c common.c isa.c readfile.c cfg.c tcfg.c loops.c options.c \

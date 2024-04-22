@@ -71,6 +71,10 @@
 #include "cache.h"
 #include "pipeline.h"
 
+int bbi_pid(tcfg_node_t *bbi);
+int bbi_bid(tcfg_node_t *bbi);
+int cond_bbi(tcfg_node_t *bbi);
+
 extern int PROGRESS_STEP;
 
 #define NOSIGN 0

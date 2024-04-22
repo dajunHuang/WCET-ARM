@@ -32,9 +32,11 @@ void pipe_analysis();
 void read_opt(int argc, char **argv);
 void read_code(char *fname);
 void build_cfgs();
-void run_cfg(char *obj_file);
 void prog_tran(char *obj_file);
 void loop_process();
+static void run_cfg(char *obj_file);
+void init_isa();
+void constraints();
 
 char DEBUG_INFEAS = 0;
 

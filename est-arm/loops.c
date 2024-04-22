@@ -27,6 +27,11 @@
 
 #define loop_bbb_idx(id) ((id)-lp_bbb_offset - num_bfg_nodes)
 
+int bbi_pid(tcfg_node_t *bbi);
+int bbi_bid(tcfg_node_t *bbi);
+int cond_bbi(tcfg_node_t *bbi);
+int bbi_backedge(tcfg_edge_t *edge);
+
 extern int num_tcfg_nodes;
 extern int num_tcfg_edges;
 extern tcfg_node_t **tcfg;
@@ -233,7 +238,7 @@ static void
 search_common_ancestor(loop_t *x, loop_t *y)
 {
     loop_t *lp;
-    int i, flag = (int)x;
+    int flag = x->flags; // check this 
 
     for (lp = x; lp != NULL; lp = lp->parent)
     {

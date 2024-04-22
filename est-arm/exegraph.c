@@ -94,7 +94,7 @@ void create_egraph(mas_inst_t *plog, int np, mas_inst_t *elog, int ne,
                    mas_inst_t *body, int nb, int bp, loop_t *lp)
 {
     int i, n;
-    static first = 1;
+    static int first = 1;
 
     plog_len = np;
     elog_len = ne;

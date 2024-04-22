@@ -24,6 +24,8 @@
 #include "common.h"
 #include "cfg.h"
 
+int get_jptable_static(addr_t src, addr_t *target);
+
 extern isa_t *isa;
 extern prog_t prog;
 

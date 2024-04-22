@@ -26,8 +26,12 @@
 #include "cache.h"
 #include "bpred.h"
 #include "loops.h"
+#include "misc.h"
 
 void set_loop_flags(int flag);
+int bbi_pid(tcfg_node_t *bbi);
+int bbi_bid(tcfg_node_t *bbi);
+int cond_bbi(tcfg_node_t *bbi);
 
 extern prog_t prog;
 extern int num_tcfg_nodes;
