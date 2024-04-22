@@ -22,6 +22,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "isa.h"
 #include "cfg.h"
 #include "tcfg.h"

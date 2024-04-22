@@ -23,6 +23,8 @@
 #include "cfg.h"
 #include "isa.h"
 
+void read_code_ss(char *fname);
+
 extern prog_t prog;
 extern isa_t *isa;
 
@@ -30,7 +32,7 @@ extern isa_t *isa;
 void read_code(char *fname)
 {
 	read_code_ss(fname);
-	dump_code();
+	// dump_code();
 }
 
 void dump_code()

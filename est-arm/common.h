@@ -114,3 +114,5 @@ int queue_empty(Queue *queue);
 void * dequeue(Queue *queue);
 void clear_queue(Queue *queue);
 #endif
+
+int read_opt_ss(int argc, char **argv);

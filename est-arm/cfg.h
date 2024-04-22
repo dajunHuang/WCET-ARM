@@ -99,9 +99,9 @@ typedef struct
 } prog_t;
 
 void dump_cfg(FILE *fp, proc_t *proc);
-
 int bb_is_loop_head(cfg_node_t *bb);
-
 int bb_is_loop_tail(cfg_node_t *bb);
+int lookup_jptable(addr_t adr);
+void get_jptable(addr_t src, int index, addr_t *target);
 
 #endif

@@ -76,7 +76,7 @@ struct tcfg_elink_t
     tcfg_elink_t *next;
 };
 
-void prog_tran();
+void prog_tran(char *obj_file);
 
 void clear_bbi_flags();
 

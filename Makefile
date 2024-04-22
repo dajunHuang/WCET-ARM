@@ -31,7 +31,7 @@ est-arm/est:
 # estimate the benchmark
 est: est-arm/est benchmark/$(TARGET)
 	cp benchmark/$(TARGET) benchmark/constriants/$(TARGET).cons results/results_est/$(TARGET)
-	-$(DIS) -d results/results_est/$(TARGET)/$(TARGET) > results/results_est/$(TARGET)/$(TARGET).dis
+	$(DIS) -d results/results_est/$(TARGET)/$(TARGET) > results/results_est/$(TARGET)/$(TARGET).dis
 	est-arm/est -run CFG -config $(CONFIG) results/results_est/$(TARGET)/$(TARGET)
 	# est-arm/est -config $(CONFIG) results/results_est/$(TARGET)/$(TARGET) > results/results_est/$(TARGET)/est_info.txt
 	# lp_solve/lp_solve -rxli lp_solve/xli_CPLEX results/results_est/$(TARGET)/$(TARGET).lp > results/results_est/$(TARGET)/result.txt
@@ -43,7 +43,6 @@ benchmark/%: benchmark/%.c
 clean:
 	make -C est-arm clean
 	-rm -r results benchmark/$(TARGET)
-	mkdir -p results/results_est results/results_sim 
 	mkdir -p results/results_est/$(TARGET)
 	mkdir -p results/results_sim/$(TARGET)
 

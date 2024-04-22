@@ -57,7 +57,7 @@ lookup_addr(char *fname)
   struct sym_sym_t *sym;
 
   sym_loadsyms(fname, 1);
-  dump_syms(sym_textsyms, sym_ntextsyms);
+  // dump_syms(sym_textsyms, sym_ntextsyms);
   // sym_dumptextsyms(stdout, 1);
   prog.start_addr = sym_textsyms[0]->addr;
   procs_addr = (md_addr_t *)calloc(max_num_procs, sizeof(md_addr_t));

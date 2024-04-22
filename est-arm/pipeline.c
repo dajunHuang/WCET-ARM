@@ -30,6 +30,8 @@
 #include "loops.h"
 #include "pipeline.h"
 
+int get_mblk_hitmiss(tcfg_node_t *bbi, int mblk_id, loop_t *lp);
+
 extern tcfg_node_t **tcfg;
 extern int num_tcfg_nodes;
 extern tcfg_edge_t **tcfg_edges;

@@ -281,15 +281,17 @@ build_bbi_map()
         update_bbi_map(tcfg[i]);
 }
 // transform the CFGs of the procs into a global flow graph (transformed-CFG)
-void prog_tran()
+void prog_tran(char *obj_file)
 {
     proc_t *proc;
     FILE *ftcfg;
+    char file[100];
+    sprintf(file, "%s.map", obj_file);
 
     proc = &prog.procs[prog.start_proc];
     proc_inline(proc, NULL, NULL, 0);
     collect_tcfg_edges();
-    ftcfg = fopen("tcfg.map", "w");
+    ftcfg = fopen(file, "w");
     dump_tcfg(ftcfg);
     fclose(ftcfg);
     build_bbi_map();
@@ -302,6 +304,7 @@ void clear_bbi_flags()
     for (i = 0; i < num_tcfg_nodes; i++)
         tcfg[i]->flags = 0;
 }
+
 void clear_tcfg_edge_flags()
 {
     int i;
@@ -309,10 +312,12 @@ void clear_tcfg_edge_flags()
     for (i = 0; i < num_tcfg_edges; i++)
         tcfg_edges[i]->flags = 0;
 }
+
 int bbi_type(tcfg_node_t *bbi)
 {
     return bbi->bb->type;
 }
+
 void dump_tcfg(FILE *fp)
 {
     tcfg_node_t *bbi;
@@ -320,7 +325,7 @@ void dump_tcfg(FILE *fp)
     int i;
 
     fprintf(fp, "dump tcfg...\n");
-    
+
     for (i = 0; i < num_tcfg_nodes; i++)
     {
         bbi = tcfg[i];

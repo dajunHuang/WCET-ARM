@@ -27,6 +27,8 @@
 #include "bpred.h"
 #include "loops.h"
 
+void set_loop_flags(int flag);
+
 extern prog_t prog;
 extern int num_tcfg_nodes;
 extern tcfg_node_t **tcfg;

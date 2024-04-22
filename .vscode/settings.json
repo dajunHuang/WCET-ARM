@@ -4,6 +4,9 @@
         "*.def": "c",
         "cache.h": "c",
         "symbol.h": "c",
-        "infeasible.h": "c"
+        "infeasible.h": "c",
+        "common.h": "c",
+        "cfg.h": "c",
+        "tcfg.h": "c"
     }
 }

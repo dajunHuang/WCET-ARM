@@ -22,15 +22,18 @@
 #include <stdio.h>
 #include "isa.h"
 
+void init_isa_ss();
+
 isa_t *isa;  // info of the instruction types of the ISA
 int num_isa; // number of instruction types of the ISA
 
 // initiate ISA info
 void init_isa()
 {
-    // if SimpleScalar is used, call this to init SimpleScalar ISA info
+    // if ARM is used, call this to init ARM ISA info
     init_isa_ss();
-    dump_isa();
+    // show registered ARM instructions
+    // dump_isa();
 }
 
 // return (decoded) instruction type
@@ -54,6 +57,27 @@ void dump_isa()
 {
     int i;
 
-    for (i = 1; i <= num_isa; i++)
-        printf("%3d: %-10s type %x\n", i, isa[i].name, isa[i].type);
+    for (i = 1; i <= num_isa; i++) {
+        printf("instruction %3d: %-10s type: ", i, isa[i].name);
+        if(isa[i].type == 1)
+            printf("INST_ICOMP\n");
+        else if(isa[i].type == 2)
+            printf("INST_FCOMP\n");
+        else if(isa[i].type == 3)
+            printf("INST_LOAD\n");
+        else if(isa[i].type == 4)
+            printf("INST_STORE\n");
+        else if(isa[i].type == 5)
+            printf("INST_COND\n");
+        else if(isa[i].type == 6)
+            printf("INST_UNCOND\n");
+        else if(isa[i].type == 7)
+            printf("INST_CALL\n");
+        else if(isa[i].type == 8)
+            printf("INST_RET\n");
+        else if(isa[i].type == 9)
+            printf("INST_TRAP\n");
+        else
+            printf("INST_NOP\n");
+    }
 }

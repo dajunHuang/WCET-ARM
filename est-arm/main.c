@@ -29,6 +29,8 @@
 void bpred_analysis();
 void cache_analysis();
 void pipe_analysis();
+void read_opt(int argc, char **argv);
+void read_code(char *fname);
 
 char DEBUG_INFEAS = 0;
 
@@ -111,7 +113,7 @@ path_analysis(char *obj_file)
     read_functions(obj_file);
 
     // transform the CFGs into a global CFG called tcfg (transformed-cfg)
-    prog_tran();
+    prog_tran(obj_file);
 
     // identify loop levels as well as block-loop mapping
     loop_process();
@@ -352,12 +354,6 @@ int main(int argc, char **argv)
 
     init_isa();
 
-    // char* filename = "/home/weichen/Desktop/chronos3.0-arm/chronos_arm/Chronos3.0/benchmarks/insertsort/insertsort";
-    // //char* filename = "~/Desktop/chronos3.0-arm/chronos_arm/Chronos3.0/benchmarks/insertsort/insertsort";
-    // read_code(filename);
-    // build_cfgs();
-    // return 0;
-
     // read options including (1) actions; (2) processor configuration
     read_opt(argc, argv);
 
@@ -380,8 +376,5 @@ int main(int argc, char **argv)
 
     path_analysis(argv[argc - 1]);
 
-    // if (strcmp(run_opt, "CFG") == 0)
-    // run_cfg(argv[argc - 1]);
-    // else
     run_est(argv[argc - 1]);
 }
