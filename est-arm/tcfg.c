@@ -295,7 +295,6 @@ void prog_tran(char *obj_file)
     ftcfg = fopen(file1, "w");
     dump_tcfg(ftcfg);
     fclose(ftcfg);
-    dump_tcfg(stdout);
     fdot = fopen(file2, "w");
     dump_dot(fdot);
     fclose(fdot);
