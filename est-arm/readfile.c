@@ -32,7 +32,7 @@ extern isa_t *isa;
 void read_code(char *fname)
 {
 	read_code_ss(fname);
-	// dump_code();
+	dump_code();
 }
 
 void dump_code()
@@ -49,7 +49,7 @@ void dump_code()
 		for (j = 0; j < inst->num_in; j++)
 			printf(" I%d", inst->in[j]);
 		if (inst->target != 0)
-			printf(" target: %x", inst->target);
+			printf(" target: 0x%x", inst->target);
 		printf("\n");
 	}
 }
