@@ -181,32 +181,7 @@ void readInstr(char *obj_file)
     }
   }
 
-  // read program preprocessing
-  // these are not part of CFG but needed for symbolic execution later
-  sprintf(tmp, "grep __start %s.dis | awk '{print $1,$3,$4}' > st.dis", obj_file);
-  system(tmp);
-  sprintf(tmp, "cat st.dis | tr ',' '\\ ' | tr '(' '\\ ' | tr ')' '\\ ' > pre", obj_file);
-  system(tmp);
-
-  num_insn_st = 0;
-  insnlist_st = NULL;
-
-  f = fopen("pre", "r");
-  while (fgets(tmp, INSN_LEN, f))
-  {
-    num_insn_st++;
-    insnlist_st = (insn_t *)realloc(insnlist_st, num_insn_st * sizeof(insn_t));
-
-    is = &(insnlist_st[num_insn_st - 1]);
-    is->r1[0] = '\0';
-    is->r2[0] = '\0';
-    is->r3[0] = '\0';
-    sscanf(tmp, "%x %s %s %s %s\n", &addr, is->op, is->r1, is->r2, is->r3);
-    sprintf(is->addr, "%x", addr); // to ensure same format (not depending on 0x, 00)
-  }
-  fclose(f);
-
-  system("rm -f tline topr pre st.dis");
+  system("rm -f tline topr");
 
   topo_call(callees, num_callee);
 

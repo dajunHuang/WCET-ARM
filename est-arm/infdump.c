@@ -53,12 +53,6 @@ int printInstructions()
   inf_node_t *ib;
   insn_t *is;
 
-  for (i = 0; i < num_insn_st; i++)
-  {
-    is = &(insnlist_st[i]);
-    printf("[st,--,%2d] 0x%s %s %s %s %s\n", i, is->addr, is->op, is->r1, is->r2, is->r3);
-  }
-
   for (i = 0; i < prog.num_procs; i++)
   {
     ip = &(inf_procs[i]);

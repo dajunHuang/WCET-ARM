@@ -160,9 +160,6 @@ int *callgraph;
 
 reg_t regList[NO_REG];
 
-int num_insn_st;
-insn_t *insnlist_st; // preprocessing instructions
-
 int num_inf_loops; // loops detected for infeasible path analysis, as specified in .cons (global across procedures)
 inf_loop_t *inf_loops;
 

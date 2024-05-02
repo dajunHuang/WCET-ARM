@@ -530,6 +530,7 @@ char *strcopy2heap(char *s)
   strcpy(buf, s);
   return buf;
 }
+
 void sym_loadsyms(char *filename, int local)
 {
   if (syms_loaded)
@@ -551,6 +552,7 @@ void sym_loadsyms(char *filename, int local)
   }
   syms_loaded = TRUE;
 }
+
 void sym_loadsyms__elf(FILE *file)
 {
 
