@@ -21,12 +21,12 @@ est-arm/est:
 # estimate the benchmark
 est: est-arm/est benchmark/$(TARGET)
 	mkdir -p results/$(TARGET)
-	cp benchmark/$(TARGET) benchmark/constriants/$(TARGET).cons results/$(TARGET)
+	-cp benchmark/$(TARGET) benchmark/constriants/$(TARGET).cons results/$(TARGET)
 	$(DIS) -d results/$(TARGET)/$(TARGET) > results/$(TARGET)/$(TARGET).dis
 	# est-arm/est -run CFG -config $(CONFIG) results/$(TARGET)/$(TARGET)
 	est-arm/est -config $(CONFIG) results/$(TARGET)/$(TARGET) > results/$(TARGET)/est_info.txt
 	dot -T png results/$(TARGET)/$(TARGET).dot -o results/$(TARGET)/$(TARGET).png
-	# lp_solve/lp_solve -rxli lp_solve/xli_CPLEX results/$(TARGET)/$(TARGET).lp > results/$(TARGET)/result.txt
+	lp_solve/lp_solve -rxli lp_solve/xli_CPLEX results/$(TARGET)/$(TARGET).lp > results/$(TARGET)/result.txt
 
 # compile benchmark
 benchmark/%: benchmark/%.c
