@@ -20,6 +20,7 @@ cache_key=*\.accesses|*\.hits
 
 # simulate benchmark
 sim: simplesim-arm/sim-outorder benchmark/$(TARGET)
+	mkdir -p results/results_sim/$(TARGET)
 	cp benchmark/$(TARGET) results/results_sim/$(TARGET)
 	-simplesim-arm/sim-outorder -config $(CONFIG) results/results_sim/$(TARGET)/$(TARGET) >& results/results_sim/$(TARGET)/sim_result.txt
 	cat results/results_sim/$(TARGET)/sim_result.txt | grep -E "$(ins_kye)|$(bpred_key)|$(cache_key)" > results/results_sim/$(TARGET)/short_result.txt
@@ -30,10 +31,12 @@ est-arm/est:
 
 # estimate the benchmark
 est: est-arm/est benchmark/$(TARGET)
+	mkdir -p results/results_est/$(TARGET)
 	cp benchmark/$(TARGET) benchmark/constriants/$(TARGET).cons results/results_est/$(TARGET)
 	$(DIS) -d results/results_est/$(TARGET)/$(TARGET) > results/results_est/$(TARGET)/$(TARGET).dis
 	# est-arm/est -run CFG -config $(CONFIG) results/results_est/$(TARGET)/$(TARGET)
 	est-arm/est -config $(CONFIG) results/results_est/$(TARGET)/$(TARGET) > results/results_est/$(TARGET)/est_info.txt
+	dot -T png results/results_est/$(TARGET)/$(TARGET).dot -o results/results_est/$(TARGET)/$(TARGET).png
 	# lp_solve/lp_solve -rxli lp_solve/xli_CPLEX results/results_est/$(TARGET)/$(TARGET).lp > results/results_est/$(TARGET)/result.txt
 
 # compile benchmark
@@ -42,7 +45,5 @@ benchmark/%: benchmark/%.c
 
 clean:
 	make -C est-arm clean
-	-rm -r results benchmark/$(TARGET)
-	mkdir -p results/results_est/$(TARGET)
-	mkdir -p results/results_sim/$(TARGET)
+	-rm results/results_est/$(TARGET)/* results/results_sim/$(TARGET)/* benchmark/$(TARGET)
 

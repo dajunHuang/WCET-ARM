@@ -8,6 +8,16 @@
         "common.h": "c",
         "cfg.h": "c",
         "tcfg.h": "c",
-        "eval.h": "c"
+        "eval.h": "c",
+        "random": "c",
+        "array": "c",
+        "chrono": "c",
+        "functional": "c",
+        "istream": "c",
+        "ostream": "c",
+        "ratio": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c"
     }
 }

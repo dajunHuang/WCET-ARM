@@ -19,6 +19,7 @@
  *
  ******************************************************************************/
 #include <stdlib.h>
+#include <string.h>
 #include "common.h"
 #include "tcfg.h"
 
@@ -91,7 +92,6 @@ new_tcfg_node(cfg_node_t *bb)
     CHECK_MEM(bbi);
     bbi->bb = bb;
     bbi->id = num_tcfg_nodes;
-    bbi->type = bb->type;
 
     return bbi;
 }
@@ -285,16 +285,20 @@ build_bbi_map()
 void prog_tran(char *obj_file)
 {
     proc_t *proc;
-    FILE *ftcfg;
-    char file[100];
-    sprintf(file, "%s.map", obj_file);
+    FILE *ftcfg, *fdot;
+    char file1[100], file2[100];
+    sprintf(file1, "%s.map", obj_file);
+    sprintf(file2, "%s.dot", obj_file);
     proc = &prog.procs[prog.start_proc];
     proc_inline(proc, NULL, NULL, 0);
     collect_tcfg_edges();
-    ftcfg = fopen(file, "w");
+    ftcfg = fopen(file1, "w");
     dump_tcfg(ftcfg);
-    dump_tcfg(stdout);
     fclose(ftcfg);
+    dump_tcfg(stdout);
+    fdot = fopen(file2, "w");
+    dump_dot(fdot);
+    fclose(fdot);
     build_bbi_map();
 }
 
@@ -319,35 +323,110 @@ int bbi_type(tcfg_node_t *bbi)
     return bbi->bb->type;
 }
 
+void dump_dot(FILE *fp)
+{
+    tcfg_node_t *bbi, *dst;
+    tcfg_edge_t *edge;
+    int i;
+    int pid;
+    int bid;
+
+    fprintf(fp, "digraph {\n\tnode [shape=rectangle]\n");
+
+    for (i = 0; i < num_tcfg_nodes; i++)
+    {
+        bbi = tcfg[i];
+        char node_type[32], dest_type[32];
+
+        if(bbi->bb->type == CTRL_SEQ)
+            strcpy(node_type, "CTRL_SEQ ");
+        else if(bbi->bb->type == CTRL_COND)
+            strcpy(node_type, "CTRL_COND ");
+        else if(bbi->bb->type == CTRL_UNCOND)
+            strcpy(node_type, "CTRL_UNCOND ");
+        else if(bbi->bb->type == CTRL_CALL)
+            strcpy(node_type, "CTRL_CALL ");
+        else if(bbi->bb->type == CTRL_RET)
+            strcpy(node_type, "CTRL_RET ");
+        
+        pid = bbi_pid(bbi);
+        bid = bbi_bid(bbi);
+
+        for (edge = bbi->out; edge != NULL; edge = edge->next_out)
+        {
+            dst = edge->dst;
+            if(dst->bb->type == CTRL_SEQ)
+                strcpy(dest_type, "CTRL_SEQ ");
+            else if(dst->bb->type == CTRL_COND)
+                strcpy(dest_type, "CTRL_COND ");
+            else if(dst->bb->type == CTRL_UNCOND)
+                strcpy(dest_type, "CTRL_UNCOND ");
+            else if(dst->bb->type == CTRL_CALL)
+                strcpy(dest_type, "CTRL_CALL ");
+            else if(dst->bb->type == CTRL_RET)
+                strcpy(dest_type, "CTRL_RET ");
+
+            fprintf(fp, "\t\"");
+            fprintf(fp, "%d Procedure %d, Block %d\\n", bbi->id, pid, bid);
+            fprintf(fp, "%s", node_type);
+            if(bb_is_loop_head(bbi->bb))
+                fprintf(fp, " head");
+            if(bb_is_loop_tail(bbi->bb))
+                fprintf(fp, " tail");
+            fprintf(fp, "\" -> \"");
+            fprintf(fp, "%d Procedure %d, Block %d\\n", dst->id, bbi_pid(dst), bbi_bid(dst));
+            fprintf(fp, "%s", dest_type);
+            if(bb_is_loop_head(dst->bb))
+                fprintf(fp, " head");
+            if(bb_is_loop_tail(dst->bb))
+                fprintf(fp, " tail");
+            fprintf(fp, "\"");
+            if(edge->branch == TAKEN)
+                fprintf(fp, " [label = \"Y\"]");
+            if(edge->branch == NOT_TAKEN)
+                fprintf(fp, " [label = \"N\"]");
+            fprintf(fp, "\n");
+        }
+    }
+
+    fprintf(fp, "}\n");
+}
+
 void dump_tcfg(FILE *fp)
 {
     tcfg_node_t *bbi;
     tcfg_edge_t *edge;
     int i;
 
-    fprintf(fp, "dump tcfg...\n");
-
     for (i = 0; i < num_tcfg_nodes; i++)
     {
         bbi = tcfg[i];
-        fprintf(fp, "%d(%d.%d): [ ", bbi->id, bbi_pid(bbi), bbi_bid(bbi));
+        fprintf(fp, "%d %d %d ", bbi->id, bbi_pid(bbi), bbi_bid(bbi));
+
+		if(bbi->bb->type == CTRL_SEQ)
+			fprintf(fp, "CTRL_SEQ ");
+		else if(bbi->bb->type == CTRL_COND)
+			fprintf(fp, "CTRL_COND ");
+		else if(bbi->bb->type == CTRL_UNCOND)
+			fprintf(fp, "CTRL_UNCOND ");
+		else if(bbi->bb->type == CTRL_CALL)
+			fprintf(fp, "CTRL_CALL ");
+		else if(bbi->bb->type == CTRL_RET)
+			fprintf(fp, "CTRL_RET ");
+        fprintf(fp, "[ ");
         for (edge = bbi->out; edge != NULL; edge = edge->next_out)
         {
-            fprintf(fp, "%d(%c) ", edge->dst->id, edge->branch == TAKEN ? 'T' : 'N');
+            if(edge->branch == NOT_TAKEN)
+                fprintf(fp, "%d ", edge->dst->id);
         }
-        fprintf(fp, "] ");
+        fprintf(fp, ", ");
+        for (edge = bbi->out; edge != NULL; edge = edge->next_out)
+        {
+            if(edge->branch == TAKEN)
+                fprintf(fp, "%d ", edge->dst->id);
+        }
+        fprintf(fp, "]");
 
-		if(bbi->type == CTRL_SEQ)
-			printf("\tCTRL_SEQ");
-		else if(bbi->type == CTRL_COND)
-			printf("\tCTRL_COND");
-		else if(bbi->type == CTRL_UNCOND)
-			printf("\tCTRL_UNCOND");
-		else if(bbi->type == CTRL_CALL)
-			printf("\tCTRL_CALL");
-		else if(bbi->type == CTRL_RET)
-			printf("\tCTRL_RET");
         fprintf(fp, "\n");
     }
-    fprintf(fp, "\n");
 }

@@ -170,9 +170,9 @@ void readInstr(char *obj_file)
         is->r3[0] = '\0';
 
         // for operands, read anew from .dis file, because these are not stored in de_inst_t
-        sprintf(tmp, "sed -n '/^00%s/p' %s.dis | awk '{print $4}' > tline", is->addr, obj_file);
+        sprintf(tmp, "sed -n '/^    %s/p' %s.dis | cut -f1 -d\"@\" | awk '{print $4\" \"$5\" \"$6}' > tline", is->addr, obj_file);
         system(tmp);
-        system("cat tline | tr ',' '\\ ' | tr '(' '\\ ' | tr ')' '\\ ' > topr");
+        system("cat tline | tr ',' '\\ ' | tr '(' '\\ ' | tr ')' '\\ '  | tr '{' '\\ ' | tr '}' '\\ ' | tr '[' '\\ ' | tr ']' '\\ ' > topr");
 
         f = fopen("topr", "r");
         fscanf(f, "%s %s %s", is->r1, is->r2, is->r3);

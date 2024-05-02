@@ -331,7 +331,7 @@ void loop_process()
 {
     find_loops();
     map_bbi_loop();
-    // dump_loops();
+    dump_loops();
     loop_relations();
     // dump_loop_comm_ances();
 }
