@@ -134,5 +134,5 @@ void dump_gen();
 void dump_loop_tags();
 void dump_mblk_hitloop();
 void dump_hm_list();
-
+void dump_cache_conflicts();
 #endif

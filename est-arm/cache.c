@@ -531,6 +531,7 @@ void cache_analysis()
     get_mblks();
     find_hitloop();
     categorize();
+    dump_cache_conflicts();
 }
 
 int get_mblk_hitmiss(tcfg_node_t *bbi, int mblk_id, loop_t *lp)
@@ -627,5 +628,25 @@ void dump_hm_list()
                 printf("\tloop[%d] ", bbi_hm_list[i][j]->id);
         }
         printf("\n");
+    }
+}
+void dump_cache_conflicts() {
+    printf("Cache Conflict Graph:\n");
+    for (int i = 0; i < num_tcfg_nodes; i++) {
+        printf("Basic Block %d:\n", i);
+        for (int j = 0; j < num_mblks[i]; j++) {
+            printf("  Memory Block %d:\n", j);
+            unsigned short set = gen[i][j].set;
+            unsigned short tag = gen[i][j].tag;
+            printf("    Set: %d, Tag: %d\n", set, tag);
+            for (int k = 0; k < num_tcfg_nodes; k++) {
+                if (i == k) continue;
+                for (int l = 0; l < num_mblks[k]; l++) {
+                    if (gen[k][l].set == set && gen[k][l].tag != tag) {
+                        printf("    Conflicts with Basic Block %d, Memory Block %d\n", k, l);
+                    }
+                }
+            }
+        }
     }
 }
