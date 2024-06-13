@@ -125,6 +125,10 @@ path_analysis(char *obj_file)
     // identify loop levels as well as block-loop mapping
     loop_process();
 
+    bpred_analys();
+
+    cache_analysis();
+
     /* vivy: infeasible path analysis */
     if (enable_infeas)
         infeas_analysis(obj_file);

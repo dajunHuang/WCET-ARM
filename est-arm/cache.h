@@ -22,6 +22,14 @@
 #ifndef CACHE_H
 #define CACHE_H
 
+#include <stdlib.h>
+#include <string.h>
+#include "common.h"
+#include "tcfg.h"
+#include "bpred.h"
+#include "loops.h"
+#include "misc.h"
+
 #define MAX_CACHE_SETS 1024
 
 // 14-bit tag is selected for the following reason:
@@ -86,6 +94,13 @@ typedef struct
     unsigned short tag; // valid tag
 } mem_blk_t;
 
+typedef struct tag_link_t tag_link_t;
+struct tag_link_t
+{
+    unsigned short tag;
+    tag_link_t *next;
+};
+
 // memory block tag data structure (or partial memory block info w/o set) this
 // implementation supports up to 2^16 = 64K memory blocks mapped to each cache
 // line, thus for a 1KB cache, the maximum program size supported would be 64M
@@ -96,5 +111,28 @@ typedef struct
 } mblk_tag_t;
 
 void set_cache_basic(int nsets, int assoc, int bsize, int miss_penalty);
+
+void set_loop_flags(int flag);
+void set_cache();
+static void tcfg_node_gen(tcfg_node_t *bbi);
+static void tcfg_edge_mp_gen(tcfg_edge_t *e);
+static void calc_gen();
+static void calc_num_mblks();
+void get_mblks();
+static tag_link_t *search_tag(int lp_id, unsigned short set, unsigned short tag);
+static void add_tag(int lp_id, unsigned short set, unsigned short tag);
+static void get_loop_tags();
+static int get_mp_conflicts(tcfg_node_t *bbi);
+static int handle_first_mblk(int bbi_id);
+static void handle_other_mblk(int bbi_id, int start_mb);
+static void find_hitloop();
+static void bbi_categorize(tcfg_node_t *bbi, loop_t **bbi_hit_loops, int len);
+static void categorize();
+void cache_analysis();
+int get_mblk_hitmiss(tcfg_node_t *bbi, int mblk_id, loop_t *lp);
+void dump_gen();
+void dump_loop_tags();
+void dump_mblk_hitloop();
+void dump_hm_list();
 
 #endif

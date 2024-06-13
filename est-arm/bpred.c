@@ -641,6 +641,13 @@ build_btg()
     // dump_btg();
 }
 
+void bpred_analys()
+{
+    collect_mp_insts();
+    build_bfg();
+    build_btg();
+}
+
 void bpred_analysis()
 {
     // printf("bpred_analysis...\n");

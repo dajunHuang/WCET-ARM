@@ -19,14 +19,9 @@
  *
  ***********************************************************************************/
 
-#include <stdlib.h>
-#include <string.h>
-#include "common.h"
-#include "tcfg.h"
+
 #include "cache.h"
-#include "bpred.h"
-#include "loops.h"
-#include "misc.h"
+
 
 void set_loop_flags(int flag);
 int bbi_pid(tcfg_node_t *bbi);
@@ -64,12 +59,7 @@ mem_blk_t **gen;
 //   indicates the end of updates in this speculative gen function
 mem_blk_t **mp_gen;
 
-typedef struct tag_link_t tag_link_t;
-struct tag_link_t
-{
-    unsigned short tag;
-    tag_link_t *next;
-};
+
 
 tag_link_t ***loop_cache_tags;
 int **num_mblk_conflicts;
@@ -317,7 +307,7 @@ get_loop_tags()
             addr += tcfg[i]->bb->code[0].size;
         }
     }
-    // dump_loop_tags();
+    dump_loop_tags();
 
     // XXX: can be optimized if children info is maintained
     for (i = 0; i < num_tcfg_loops; i++)
@@ -339,7 +329,7 @@ get_loop_tags()
             }
         }
     }
-    // dump_loop_tags();
+    dump_loop_tags();
 
     for (i = 0; i < num_tcfg_loops; i++)
     {
@@ -349,7 +339,7 @@ get_loop_tags()
             {
                 num_mblk_conflicts[i][set]++;
             }
-            // printf("conflicts: (%d, %d): %d\n", i, set, num_mblk_conflicts[i][set]);
+            printf("conflicts: (%d, %d): %d\n", i, set, num_mblk_conflicts[i][set]);
         }
     }
 }
@@ -479,7 +469,7 @@ find_hitloop()
         start_mb = handle_first_mblk(i);
         handle_other_mblk(i, start_mb);
     }
-    // dump_mblk_hitloop();
+    dump_mblk_hitloop();
 }
 
 static void
@@ -531,12 +521,12 @@ categorize()
         bbi_categorize(tcfg[i], queue, len);
     }
     set_loop_flags(0);
-    // dump_hm_list();
+    dump_hm_list();
 }
 
 void cache_analysis()
 {
-    // printf("mblk categorization (hit or unknown)\n");
+    printf("mblk categorization (hit or unknown)\n");
     set_cache();
     get_mblks();
     find_hitloop();
