@@ -30,6 +30,7 @@
 char *load_elf_strtabl(FILE *file, long offset, size_t size);
 void decode_inst(de_inst_t *de_inst, md_inst_t inst);
 void dump_syms(struct sym_sym_t **syms, int size);
+void sym_loadsyms(char *filename, int local);
 
 // variables from readfile.c
 extern prog_t prog;
@@ -57,8 +58,7 @@ lookup_addr(char *fname)
   struct sym_sym_t *sym;
 
   sym_loadsyms(fname, 1);
-  // dump_syms(sym_textsyms, sym_ntextsyms);
-  // sym_dumptextsyms(stdout, 1);
+  dump_syms(sym_textsyms, sym_ntextsyms);
   prog.start_addr = sym_textsyms[0]->addr;
   procs_addr = (md_addr_t *)calloc(max_num_procs, sizeof(md_addr_t));
   for (i = 0; i < sym_ntextsyms; i++)
@@ -116,8 +116,8 @@ lookup_addr(char *fname)
 
 static void read_text_head(FILE *file)
 {
-  struct elf_filehdr ehdr;  // elf 文件头
-  struct elf_scnhdr scnhdr; // 段表头部
+  struct elf32_filehdr ehdr;  // elf 文件头
+  struct elf32_scnhdr scnhdr; // 段表头部
   int read_count = 0;
   int section_index = 0;    // 段下标
   int nums_of_sections = 0; // 段的数目
@@ -128,7 +128,7 @@ static void read_text_head(FILE *file)
   int strtb_count = 0;
   unsigned text_size = 0;
   // 读取 elf 文件的文件头
-  if (fread(&ehdr, sizeof(struct elf_filehdr), 1, file) < 1)
+  if (fread(&ehdr, sizeof(struct elf32_filehdr), 1, file) < 1)
   {
     printf("read elf header filaed: %s\n", strerror(errno));
     return;
@@ -142,7 +142,7 @@ static void read_text_head(FILE *file)
     return;
   }
   // 读取段表字符串表
-  while (read_count = fread(&scnhdr, sizeof(struct elf_scnhdr), 1, file))
+  while (read_count = fread(&scnhdr, sizeof(struct elf32_scnhdr), 1, file))
   {
     if (read_count < 1)
     {
@@ -162,7 +162,7 @@ static void read_text_head(FILE *file)
   // 循环读取段表中各个段的信息，查找到 .text 退出循环；
   while ((section_index++) < nums_of_sections - 1)
   {
-    read_count = fread(&scnhdr, sizeof(struct elf_scnhdr), 1, file);
+    read_count = fread(&scnhdr, sizeof(struct elf32_scnhdr), 1, file);
     if (read_count < 1)
     {
       printf("read elf section filaed: %s\n", strerror(errno));

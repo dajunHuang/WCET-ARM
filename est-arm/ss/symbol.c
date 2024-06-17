@@ -556,8 +556,8 @@ void sym_loadsyms(char *filename, int local)
 void sym_loadsyms__elf(FILE *file)
 {
 
-  struct elf_filehdr ehdr;  // elf 文件头
-  struct elf_scnhdr scnhdr; // 段表头部
+  struct elf32_filehdr ehdr;  // elf 文件头
+  struct elf32_scnhdr scnhdr; // 段表头部
   struct Elf32_Sym symtb;   // 符号表
   int read_count = 0;
   long symtb_offset = 0;    // 符号表文件偏移
@@ -569,13 +569,13 @@ void sym_loadsyms__elf(FILE *file)
   char *secstrtbl = NULL; // 段表字符串表
   char *strtb = NULL;     // 字符串表
   int strtb_count = 0;
-  struct elf_scnhdr symtbl_hdr; // 段表头部
+  struct elf32_scnhdr symtbl_hdr; // 符号表段表项
 
   int debug_cnt = 0;
   int i = 0;
 
   // 读取 elf 文件的文件头
-  if (fread(&ehdr, sizeof(struct elf_filehdr), 1, file) < 1)
+  if (fread(&ehdr, sizeof(struct elf32_filehdr), 1, file) < 1)
   {
     printf("read elf header filaed: %s\n", strerror(errno));
     return;
@@ -589,7 +589,7 @@ void sym_loadsyms__elf(FILE *file)
     return;
   }
   // 读取段表字符串表
-  while (read_count = fread(&scnhdr, sizeof(struct elf_scnhdr), 1, file))
+  while (read_count = fread(&scnhdr, sizeof(struct elf32_scnhdr), 1, file))
   {
     if (read_count < 1)
     {
@@ -604,12 +604,13 @@ void sym_loadsyms__elf(FILE *file)
     section_index++;
   }
   assert(secstrtbl);
+
   fseek(file, (long)ehdr.e_shoff, SEEK_SET);
   section_index = -1;
   // 循环读取段表中各个段的信息，查找到符号表和字符串表后退出循环；
   while (section_index++ < nums_of_sections - 1)
   {
-    read_count = fread(&scnhdr, sizeof(struct elf_scnhdr), 1, file);
+    read_count = fread(&scnhdr, sizeof(struct elf32_scnhdr), 1, file);
     if (read_count < 1)
     {
       printf("read elf section filaed: %s\n", strerror(errno));

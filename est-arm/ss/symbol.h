@@ -191,7 +191,7 @@
 #define EI_NIDENT (16)
 
 // elf文件头数据结构
-struct elf_filehdr
+struct elf32_filehdr
 {
   unsigned char e_ident[EI_NIDENT]; /* Magic number and other info */
   half_t e_type;                    /* Object file type */
@@ -208,8 +208,27 @@ struct elf_filehdr
   half_t e_shnum;                   /* Section header table entry count */
   half_t e_shstrndx;                /* Section header string table index */
 };
+
+struct elf64_filehdr
+{
+  unsigned char e_ident[EI_NIDENT]; /* Magic number and other info */
+  half_t e_type;                    /* Object file type */
+  half_t e_machine;                 /* Architecture */
+  word_t e_version;                 /* Object file version */
+  qword_t e_entry;                   /* Entry point virtual address */
+  qword_t e_phoff;                   /* Program header table file offset */
+  qword_t e_shoff;                   /* Section header table file offset */
+  word_t e_flags;                   /* Processor-specific flags */
+  half_t e_ehsize;                  /* ELF header size in bytes */
+  half_t e_phentsize;               /* Program header table entry size */
+  half_t e_phnum;                   /* Program header table entry count */
+  half_t e_shentsize;               /* Section header table entry size */
+  half_t e_shnum;                   /* Section header table entry count */
+  half_t e_shstrndx;                /* Section header string table index */
+};
+
 // 段表数据结构
-struct elf_scnhdr
+struct elf32_scnhdr
 {
   word_t sh_name;      /* Section name (string tbl index) */
   word_t sh_type;      /* Section type */
@@ -223,6 +242,20 @@ struct elf_scnhdr
   word_t sh_entsize;   /* Entry size if section holds table */
 };
 
+struct elf64_scnhdr
+{
+  word_t sh_name;      /* Section name (string tbl index) */
+  word_t sh_type;      /* Section type */
+  qword_t sh_flags;     /* Section flags */
+  qword_t sh_addr;      /* Section virtual addr at execution */
+  qword_t sh_offset;    /* Section file offset */
+  qword_t sh_size;      /* Section size in bytes */
+  word_t sh_link;      /* Link to another section */
+  word_t sh_info;      /* Additional section information */
+  qword_t sh_addralign; /* Section alignment */
+  qword_t sh_entsize;   /* Entry size if section holds table */
+};
+
 // 符号表数据结构
 struct Elf32_Sym
 {
@@ -232,6 +265,16 @@ struct Elf32_Sym
   unsigned char st_info;
   unsigned char st_other;
   half_t st_shndx;
+};
+
+struct Elf64_Sym
+{
+  word_t st_name;
+  unsigned char st_info;
+  unsigned char st_other;
+  half_t st_shndx;
+  qword_t st_value;
+  qword_t st_size;
 };
 
 enum sym_seg_t
