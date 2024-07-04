@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",    
+    "configurations": [    
+        {    
+            "name": "C++ Launch (GDB)",    
+            "type": "cppdbg",    
+            "request": "launch",  
+            "targetArchitecture": "x64",    
+            "program": "${workspaceFolder}/est-arm/est",
+            "args": ["-config", "est-arm/processor.opt", "results/insertsort/insertsort"],
+            "stopAtEntry": false,    
+            "cwd": "${workspaceRoot}",    
+            "environment": [],    
+            "externalConsole": false,
+            "miDebuggerPath": "/usr/bin/gdb", 
+        }
+    ]
+}
